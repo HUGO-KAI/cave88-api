@@ -6,7 +6,7 @@ exports.createProduct = (req, res, next) => {
     const productObject = JSON.parse(req.body.product)
     const product = new Product({        
         ...productObject,
-        imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
+        imageUrl: `https://${req.get('host')}/images/${req.file.filename}`
   });
   product.save()
     .then(() => { res.status(201).json({message: 'Product enregistré !'})})
